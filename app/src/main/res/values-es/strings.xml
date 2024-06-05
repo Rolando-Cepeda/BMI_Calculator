@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BMI_CALCULATOR</string>
+    <string name="main_activity_click">Clic y disfrútalo</string>
+    <string name="main_activity_back">Atrás</string>
+</resources>

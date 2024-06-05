@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BMI_CALCULATOR</string>
+    <string name="main_activity_click">Click and enjoy it</string>
+    <string name="main_activity_back">Back</string>
 </resources>
