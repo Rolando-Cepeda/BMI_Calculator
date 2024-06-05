@@ -1,36 +1,65 @@
 package com.example.bmi_calculator
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var welcomeTextView : TextView
-    lateinit var clickButton: Button
-    lateinit var clickButton2: Button
+    lateinit var heightEditText: EditText
+    lateinit var weightTextView: TextView
+    lateinit var minusButton: Button
+    lateinit var addButton: Button
+    lateinit var descriptionTextView: TextView
+    lateinit var resultTextView: TextView
+    lateinit var calculateButton: Button
+
+    var height: Int = 150
+    var weight: Int = 70
+    val title: String ="BIENVENIDO"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        welcomeTextView = findViewById(R.id.welcomeTextView)
-        clickButton = findViewById(R.id.clickButton)
-        clickButton2 = findViewById(R.id.clickButton2)
+        heightEditText = findViewById(R.id.heightEditText)
+        weightTextView = findViewById(R.id.weightTextView)
+        minusButton = findViewById(R.id.minusButton)
+        addButton = findViewById(R.id.addButton)
+        descriptionTextView = findViewById(R.id.descriptionTextView)
+        resultTextView = findViewById(R.id.resultTextView)
+        calculateButton = findViewById(R.id.calculateButton)
 
-        welcomeTextView.text = "Bienvenido a mi primera Aplicación Android"
+        setHeight()
+        setWeight()
 
-        clickButton.setOnClickListener {
-            welcomeTextView.text = "Sigue intentando"
+        minusButton.setOnClickListener {
+            weight --
+            setWeight()
         }
-        clickButton2.setOnClickListener {
-            welcomeTextView.text = "Bienvenido a mi primera Aplicación Android"
+
+        addButton.setOnClickListener {
+            weight ++
+            setWeight()
         }
 
+        calculateButton.setOnClickListener {
+            height = heightEditText.text.toString().toInt()
 
+            val result = weight / (height / 100f).pow(2)
 
+            resultTextView.text = result.toString()
+        }
+    }
+
+    fun setHeight() {
+        heightEditText.setText(height.toString())
+    }
+
+    fun setWeight() {
+        weightTextView.text = "$weight Kg"
     }
 }
