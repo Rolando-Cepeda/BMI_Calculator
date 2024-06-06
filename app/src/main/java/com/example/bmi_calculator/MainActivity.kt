@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     var height: Int = 150
     var weight: Int = 70
-    val title: String ="BIENVENIDO"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,13 +45,29 @@ class MainActivity : AppCompatActivity() {
             setWeight()
         }
 
-        calculateButton.setOnClickListener {
+        /**calculateButton.setOnClickListener {
             height = heightEditText.text.toString().toInt()
 
             val result = weight / (height / 100f).pow(2)
 
             resultTextView.text = result.toString()
+        } **/
+
+        calculateButton.setOnClickListener {
+            val heightText = heightEditText.text.toString()
+            if (heightText.isNotEmpty()) {
+                val height = heightText.toDouble() / 100 // Convertir cm a metros
+                val bmi = weight / (height * height)
+                resultTextView.text = String.format("%.2f", bmi)
+                //val result = weight / (height / 100f).pow(2)
+                //resultTextView.text = result.toString()
+
+                descriptionTextView.text = getResultsBMI(bmi)
+            } else {
+                heightEditText.error = "Por favor, ingrese su altura"
+            }
         }
+
     }
 
     fun setHeight() {
@@ -62,4 +77,14 @@ class MainActivity : AppCompatActivity() {
     fun setWeight() {
         weightTextView.text = "$weight Kg"
     }
+
+    private fun getResultsBMI(bmi: Double): String {
+        return when {
+            bmi < 18.5 -> "Peso bajo"
+            bmi in 18.5..24.9 -> "Peso normal"
+            bmi in 25.0..29.9 -> "Sobrepeso"
+            else -> "Obesidad"
+        }
+    }
+
 }
