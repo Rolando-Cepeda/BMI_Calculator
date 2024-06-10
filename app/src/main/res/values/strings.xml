@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">BMI_CALCULATOR</string>
-    <string name="main_activity_click">Click and enjoy it</string>
+
+    <string name="title">BMI CALCULATOR</string>
+    <string name="height_label">Altura:</string>
+    <string name="weight_label">Peso:</string>
+    <string name="height_text">%1$d cm</string>
+    <string name="weight_text">%1$d Kg</string>
+    <string name="calculate_button">Calculate</string>
+    <string name="under_weight">Under Weight</string>
+    <string name="normal_weight">Normal weight</string>
+    <string name="over_weight">Over weight</string>
+    <string name="obesity">Obesity</string>
+    <string name="main_activity_click">Click</string>
     <string name="main_activity_back">Back</string>
 </resources>
